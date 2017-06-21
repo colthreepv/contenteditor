@@ -22,3 +22,5 @@
     - Added texteditor component to handle simple text edits, instead of using fixtures.
 1.0.10:
     - Handling the retrieval of [data-tools] when editing ul > li elements or nested elements
+1.0.11:
+    - Automatically creates missing content files when admin is logged, to speed up content file creation.

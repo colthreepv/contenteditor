@@ -1,5 +1,8 @@
 <?php namespace Samuell\ContentEditor\Components;
 
+use Cms\Classes\Content;
+use Faker\Provider\Lorem;
+
 class TextEditor extends ContentEditor {
 
     public function componentDetails()
@@ -22,5 +25,12 @@ class TextEditor extends ContentEditor {
         ];
     }
 
+    protected function createEmptyContent($fileName) {
+        $newContentFile = Content::inTheme($this->getTheme());
+        $newContentFile->fill([
+            'fileName' => $fileName,
+            'markup' => Lorem::sentence()
+        ])->save();
+    }
 
 }

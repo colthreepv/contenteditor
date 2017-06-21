@@ -5,6 +5,7 @@ use BackendAuth;
 use Cms\Classes\Content;
 use Cms\Classes\CmsObject;
 use Cms\Classes\ComponentBase;
+use Faker\Provider\Lorem;
 
 use Samuell\ContentEditor\Models\Settings;
 
@@ -77,7 +78,15 @@ class ContentEditor extends ComponentBase
             if (Content::load($this->getTheme(), $this->file)){
                 $this->content = $this->renderContent($this->file);
             } else {
-                $this->content = $this->renderContent($this->property('file'));
+
+                // if the default content is there, render it
+                if (Content::load($this->getTheme(), $this->property('file'))) {
+                    $this->content = $this->renderContent($this->property('file'));
+                } else {
+                    // otherwise create a lorem ipsum file, localized
+                    $this->content = '';
+                    $this->createEmptyContent($this->file);
+                }
             }
         } else {
             if (Content::load($this->getTheme(), $this->file)){
@@ -117,6 +126,14 @@ class ContentEditor extends ComponentBase
         }
 
         return $file;
+    }
+
+    protected function createEmptyContent($fileName) {
+        $newContentFile = Content::inTheme($this->getTheme());
+        $newContentFile->fill([
+            'fileName' => $fileName,
+            'markup' => '<p>' . Lorem::sentence() . '</p>'
+        ])->save();
     }
 
     public function setTranslateFile($file)
