@@ -20,3 +20,5 @@
     - CSS split between original and additional
 1.0.9:
     - Added texteditor component to handle simple text edits, instead of using fixtures.
+1.0.10:
+    - Handling the retrieval of [data-tools] when editing ul > li elements or nested elements
