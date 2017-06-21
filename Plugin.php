@@ -30,6 +30,7 @@ class Plugin extends PluginBase
       {
          return [
              'Samuell\ContentEditor\Components\ContentEditor' => 'contenteditor',
+             'Samuell\ContentEditor\Components\TextEditor'    => 'texteditor',
          ];
       }
 

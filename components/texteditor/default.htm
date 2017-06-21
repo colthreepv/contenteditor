@@ -1,0 +1,30 @@
+<div data-fixture data-ce-tag="p"
+    data-component="{{ __SELF__ }}::onSave"
+    data-file="{{ __SELF__.file }}"
+    data-tools="*">
+    {{ __SELF__.content|raw }}
+</div>
+
+{% put scripts %}
+<script type="text/javascript">
+/* CONTENT EDITOR SCRIPT START */
+ContentTools.StylePalette.add([
+    {% for style in __SELF__.palettes %}
+        new ContentTools.Style('{{ style.name ? style.name : style.class }}', '{{ style.class }}', {{ style.allowed_tags|json_encode()|raw }}),
+    {% endfor %}
+]);
+editor.toolbox().tools([
+    [
+    {% for value in __SELF__.buttons %}
+        '{{ value }}',
+    {% endfor %}
+    ],
+    [
+        'undo',
+        'redo',
+        'remove'
+    ]
+]);
+/* CONTENT EDITOR SCRIPT END */
+</script>
+{% endput %}
