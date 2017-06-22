@@ -26,3 +26,5 @@
     - Automatically creates missing content files when admin is logged, to speed up content file creation.
 1.2.1:
     - FIXUP: Tools were getting stuck when changed between texteditor/contenteditor
+1.2.2:
+    - FIXUP: loremipsum file now gets created and read on the first page load

@@ -84,8 +84,7 @@ class ContentEditor extends ComponentBase
                     $this->content = $this->renderContent($this->property('file'));
                 } else {
                     // otherwise create a lorem ipsum file, localized
-                    $this->content = '';
-                    $this->createEmptyContent($this->file);
+                    $this->content = $this->createEmptyContent($this->file);
                 }
             }
         } else {
@@ -130,10 +129,13 @@ class ContentEditor extends ComponentBase
 
     protected function createEmptyContent($fileName) {
         $newContentFile = Content::inTheme($this->getTheme());
+        $lorem = '<p>' . Lorem::sentence() . '</p>';
         $newContentFile->fill([
             'fileName' => $fileName,
-            'markup' => '<p>' . Lorem::sentence() . '</p>'
+            'markup' => $lorem
         ])->save();
+
+        return $lorem;
     }
 
     public function setTranslateFile($file)

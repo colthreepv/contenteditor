@@ -27,10 +27,13 @@ class TextEditor extends ContentEditor {
 
     protected function createEmptyContent($fileName) {
         $newContentFile = Content::inTheme($this->getTheme());
+        $lorem = Lorem::sentence();
         $newContentFile->fill([
             'fileName' => $fileName,
-            'markup' => Lorem::sentence()
+            'markup' => $lorem
         ])->save();
+
+        return $lorem;
     }
 
 }
