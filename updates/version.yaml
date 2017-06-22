@@ -18,11 +18,11 @@
 1.0.8:
     - Updated ContentEditor to 1.3.3
     - CSS split between original and additional
-1.0.9:
+1.1.0:
     - Added texteditor component to handle simple text edits, instead of using fixtures.
-1.0.10:
+1.1.1:
     - Handling the retrieval of [data-tools] when editing ul > li elements or nested elements
-1.0.11:
+1.2.0:
     - Automatically creates missing content files when admin is logged, to speed up content file creation.
-1.0.12:
+1.2.1:
     - FIXUP: Tools were getting stuck when changed between texteditor/contenteditor
