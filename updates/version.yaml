@@ -28,3 +28,5 @@
     - FIXUP, Tools were getting stuck when changed between texteditor/contenteditor
 1.2.2:
     - FIXUP, loremipsum file now gets created and read on the first page load
+1.2.3:
+    - texteditor now uses <span>(s) instead of <div>(s), paragraphs can only contain inline tags
